@@ -1,0 +1,7 @@
+For making image:
+
+    podman build -t build-app --file build-app.containerfile .
+
+For running:
+
+    podman run --rm --volume source-dir:/mnt/nfs:rw,z build-app

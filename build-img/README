@@ -1,0 +1,20 @@
+For making image:
+
+    podman build -t app --volume source-dir:/mnt/nfs:ro,z --file app.containerfile .
+
+For running:
+
+    podman run --rm --publish 99:9999 --name app app 
+
+Testing via clinet:
+
+    nc localhost 99 < /dev/null
+
+Making a sytemd unit file:
+
+    podman generate systemd --new --name app > /etc/systemd/system/app.service
+    restorecon /etc/systemd/system/app.service
+    systemctl daemon-restart
+
+    systemctl start app
+    systemctl sop app    
